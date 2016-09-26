@@ -12,21 +12,6 @@ public class LightBulbActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_bulb);
     }
 
-    public void getRed(View view) {
-
-    }
-
-    public void getGreen(View view) {
-
-    }
-
-    public void getBlue(View view) {
-
-    }
-
-    public void getWhite(View view) {
-
-    }
 
     public void getAll(View view) {
 

@@ -12,7 +12,7 @@
 
 
     <TextView
-        android:text="Red"
+        android:text="Title"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/textView0" />
@@ -42,23 +42,16 @@
             android:layout_width="0dp"
             android:id="@+id/textView2"
             android:layout_below="@+id/switch1"
-            android:layout_weight="0.48" />
+            android:layout_weight="0.5" />
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="0.48"
+            android:layout_weight="0.5"
             android:inputType="text"
             android:text="Value"
             android:ems="10"
             android:layout_below="@+id/textView2"
             android:id="@+id/editText2" />
-        <Button
-            android:text="GET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button8"
-            android:layout_weight="0.04"
-            android:onClick="getRed"/>
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +70,7 @@
             android:layout_width="0dp"
             android:id="@+id/textView2"
             android:layout_below="@+id/switch1"
-            android:layout_weight="0.48" />
+            android:layout_weight="0.5" />
 
         <EditText
             android:layout_height="wrap_content"
@@ -86,17 +79,8 @@
             android:text="Value"
             android:ems="10"
             android:layout_below="@+id/textView2"
-            android:layout_weight="0.48"
+            android:layout_weight="0.5"
         android:id="@+id/editText2" />
-        <Button
-            android:text="GET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button8"
-            android:layout_weight="0.04"
-            android:onClick="getBlue"/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -112,7 +96,7 @@
             android:layout_width="0dp"
             android:id="@+id/textView2"
             android:layout_below="@+id/switch1"
-            android:layout_weight="0.48" />
+            android:layout_weight="0.5" />
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -120,17 +104,8 @@
             android:text="Value"
             android:ems="10"
             android:layout_below="@+id/textView2"
-            android:layout_weight="0.48"
+            android:layout_weight="0.5"
         android:id="@+id/editText2" />
-        <Button
-            android:text="GET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button8"
-            android:layout_weight="0.04"
-            android:onClick="getGreen"/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -148,7 +123,7 @@
             android:layout_width="0dp"
             android:id="@+id/textView2"
             android:layout_below="@+id/switch1"
-            android:layout_weight="0.48" />
+            android:layout_weight="0.5" />
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -156,15 +131,8 @@
             android:text="Value"
             android:ems="10"
             android:layout_below="@+id/textView2"
-            android:layout_weight="0.48"
+            android:layout_weight="0.5"
             android:id="@+id/editText2" />
-        <Button
-            android:text="GET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button8"
-            android:layout_weight="0.04"
-            android:onClick="getWhite" />
     </LinearLayout>
 
     <LinearLayout

@@ -5,123 +5,123 @@ package Model;
  */
 
 public class SensorModel {
-    boolean status;
-    double temperature;
-    double pressure;
-    double humidity;
-    double magnetmoeterX;
-    double magnetmoeterY;
-    double magnetmoeterZ;
-    double accelorometerX;
-    double accelorometerY;
-    double accelorometerZ;
-    double gyroscopeX;
-    double gyroscopeY;
-    double gyroscopeZ;
+    String status;
+    String temperature;
+    String pressure;
+    String humidity;
+    String magnetmoeterX;
+    String magnetmoeterY;
+    String magnetmoeterZ;
+    String accelorometerX;
+    String accelorometerY;
+    String accelorometerZ;
+    String gyroscopeX;
+    String gyroscopeY;
+    String gyroscopeZ;
 
 
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public double getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 
-    public double getPressure() {
+    public String getPressure() {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    public void setPressure(String pressure) {
         this.pressure = pressure;
     }
 
-    public double getHumidity() {
+    public String getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(String humidity) {
         this.humidity = humidity;
     }
 
-    public double getMagnetmoeterX() {
+    public String getMagnetmoeterX() {
         return magnetmoeterX;
     }
 
-    public void setMagnetmoeterX(double magnetmoeterX) {
+    public void setMagnetmoeterX(String magnetmoeterX) {
         this.magnetmoeterX = magnetmoeterX;
     }
 
-    public double getMagnetmoeterY() {
+    public String getMagnetmoeterY() {
         return magnetmoeterY;
     }
 
-    public void setMagnetmoeterY(double magnetmoeterY) {
+    public void setMagnetmoeterY(String magnetmoeterY) {
         this.magnetmoeterY = magnetmoeterY;
     }
 
-    public double getMagnetmoeterZ() {
+    public String getMagnetmoeterZ() {
         return magnetmoeterZ;
     }
 
-    public void setMagnetmoeterZ(double magnetmoeterZ) {
+    public void setMagnetmoeterZ(String magnetmoeterZ) {
         this.magnetmoeterZ = magnetmoeterZ;
     }
 
-    public double getAccelorometerX() {
+    public String getAccelorometerX() {
         return accelorometerX;
     }
 
-    public void setAccelorometerX(double accelorometerX) {
+    public void setAccelorometerX(String accelorometerX) {
         this.accelorometerX = accelorometerX;
     }
 
-    public double getAccelorometerY() {
+    public String getAccelorometerY() {
         return accelorometerY;
     }
 
-    public void setAccelorometerY(double accelorometerY) {
+    public void setAccelorometerY(String accelorometerY) {
         this.accelorometerY = accelorometerY;
     }
 
-    public double getAccelorometerZ() {
+    public String getAccelorometerZ() {
         return accelorometerZ;
     }
 
-    public void setAccelorometerZ(double accelorometerZ) {
+    public void setAccelorometerZ(String accelorometerZ) {
         this.accelorometerZ = accelorometerZ;
     }
 
-    public double getGyroscopeX() {
+    public String getGyroscopeX() {
         return gyroscopeX;
     }
 
-    public void setGyroscopeX(double gyroscopeX) {
+    public void setGyroscopeX(String gyroscopeX) {
         this.gyroscopeX = gyroscopeX;
     }
 
-    public double getGyroscopeY() {
+    public String getGyroscopeY() {
         return gyroscopeY;
     }
 
-    public void setGyroscopeY(double gyroscopeY) {
+    public void setGyroscopeY(String gyroscopeY) {
         this.gyroscopeY = gyroscopeY;
     }
 
-    public double getGyroscopeZ() {
+    public String getGyroscopeZ() {
         return gyroscopeZ;
     }
 
-    public void setGyroscopeZ(double gyroscopeZ) {
+    public void setGyroscopeZ(String gyroscopeZ) {
         this.gyroscopeZ = gyroscopeZ;
     }
 }

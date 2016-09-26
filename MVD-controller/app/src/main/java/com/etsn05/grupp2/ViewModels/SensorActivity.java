@@ -1,4 +1,4 @@
-package com.etsn05.grupp2.mvd_controller;
+package com.etsn05.grupp2.ViewModels;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

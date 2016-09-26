@@ -1,4 +1,4 @@
-package com.etsn05.grupp2.mvd_controller;
+package com.etsn05.grupp2.ViewModels;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

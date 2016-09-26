@@ -10,4 +10,7 @@ public class SensorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor);
     }
+    protected void getAll(){
+
+    }
 }

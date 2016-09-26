@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Pattern;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,8 +47,10 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
         HttpURLConnection conn=null;
         JSONObject rootObject = null;
         String strJSON;
-        String text="";
-        String text2="";
+        String text = "";
+        String text2 = "";
+        String json = "{";
+        String jsonEnd = "}";
         try {
 
             conn=(HttpURLConnection)(new URL("http://vm39.cs.lth.se:9000/device").openConnection());
@@ -55,17 +59,25 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
             InputStream is=new BufferedInputStream(conn.getInputStream());
             //test
             text = getASCIIContentFromEntity(is);
-            strJSON = text.substring(1, text.length() - 1);
-            rootObject = new JSONObject(strJSON);
-            text2 = rootObject.getString("id");
+            // Removes all brackets and curlybrackets from start and end of string.
+            strJSON = text.substring(2, text.length() - 2);
+            // Split string into seperate JSON objects
+            String[] jsonFileArray = strJSON.split(Pattern.quote("},{"));
+            for(String s : jsonFileArray){
+                //Construct our "new" JSON objects.
+                s = "{" + s + "}";
+                rootObject = new JSONObject(s);
+                text2 = rootObject.getString("id");
+                System.out.println(s + text2);
+            }
 
 
-        } catch (JSONException e) {
+        }catch (JSONException e) {
             e.printStackTrace();
         }catch(IOException p){
             p.printStackTrace();
         }
-        System.out.println(text2);
+      //  System.out.println(text2);
         return text2;
     }
 

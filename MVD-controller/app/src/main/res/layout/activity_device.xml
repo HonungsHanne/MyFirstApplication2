@@ -17,7 +17,7 @@
         android:id="@+id/ButtonGetDevice"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickGetDevices"/>
+        android:onClick="onClickControlDevices"/>
 
     <Button
         android:text="Controll Device"

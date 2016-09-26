@@ -7,11 +7,13 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import Connection.ConnectionHandler;
 import Model.DeviceModel;
 
 public class DeviceActivity extends AppCompatActivity {
     private ArrayList<DeviceModel> devices;
     private DeviceModel selected;
+    private ConnectionHandler ch;
 
 
 
@@ -24,6 +26,8 @@ public class DeviceActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Get Device button */
     public void onClickControlDevices(View view) {
+        ch=new ConnectionHandler();
+        System.out.println(ch.execute());
 
     }
 
@@ -34,10 +38,10 @@ public class DeviceActivity extends AppCompatActivity {
         // String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+
     }
 
     /* when list is pushed*/
-
     public void onSelected(){
 
     }

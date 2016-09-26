@@ -17,7 +17,8 @@
         android:id="@+id/button5"
         android:layout_below="@+id/button4"
         android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+        android:layout_alignStart="@+id/button4"
+        android:onClick="getGyroscope"/>
 
     <Button
         android:text="Get"
@@ -26,7 +27,8 @@
         android:id="@+id/button4"
         android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:onClick="getMagnet"/>
 
     <Button
         android:text="Get"
@@ -35,7 +37,8 @@
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
         android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
+        android:layout_alignStart="@+id/button2"
+        android:onClick="getHumidity"/>
 
     <Button
         android:text="Get"
@@ -45,7 +48,8 @@
         android:layout_alignLeft="@+id/button5"
         android:layout_alignStart="@+id/button5"
         android:layout_marginTop="44dp"
-        android:id="@+id/button6" />
+        android:id="@+id/button6"
+        android:onClick="getAccelerometer"/>
 
     <Button
         android:text="Clear All"
@@ -56,7 +60,8 @@
         android:layout_toEndOf="@+id/button7"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:id="@+id/button8" />
+        android:id="@+id/button8"
+        android:onClick="clearAll"/>
 
     <Switch
         android:text="On/Off"
@@ -74,7 +79,8 @@
         android:id="@+id/button2"
         android:layout_below="@+id/button"
         android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_alignStart="@+id/button"
+        android:onClick="getPressure"/>
 
     <Button
         android:text="Get"
@@ -83,7 +89,8 @@
         android:id="@+id/button"
         android:layout_below="@+id/switch1"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="getTemperature"/>
 
     <TextView
         android:text="Humidity:"
@@ -197,7 +204,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/textView12"
         android:layout_toStartOf="@+id/textView12"
-        android:onClick=""/>
+        android:onClick="getAll"/>
 
     <TextView
         android:text="TextView"

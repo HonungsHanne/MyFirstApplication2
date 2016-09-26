@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -41,8 +43,10 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
     @Override
     protected String doInBackground(Void... params) {
         HttpURLConnection conn=null;
-
+        JSONObject rootObject = null;
+        String strJSON;
         String text="";
+        String text2="";
         try {
 
             conn=(HttpURLConnection)(new URL("http://vm39.cs.lth.se:9000/device").openConnection());
@@ -51,11 +55,18 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
             InputStream is=new BufferedInputStream(conn.getInputStream());
             //test
             text = getASCIIContentFromEntity(is);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            strJSON = text.substring(1, text.length() - 1);
+            rootObject = new JSONObject(strJSON);
+            text2 = rootObject.getString("id");
 
-        return text;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }catch(IOException p){
+            p.printStackTrace();
+        }
+        System.out.println(text2);
+        return text2;
     }
 
     //This will be run along with doInback. Could be used to update a progressbar

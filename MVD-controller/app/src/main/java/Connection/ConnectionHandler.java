@@ -41,7 +41,6 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
     @Override
     protected String doInBackground(Void... params) {
         HttpURLConnection conn=null;
-        ObjectMapper mapper=new ObjectMapper();
 
         String text="";
         try {

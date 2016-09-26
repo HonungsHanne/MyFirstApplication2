@@ -38,7 +38,7 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
 
             if (n>0) out.append(new String(b, 0, n));
         }
-        System.out.println(out.toString());
+        //System.out.println(out.toString());
         return out.toString();
     }
 

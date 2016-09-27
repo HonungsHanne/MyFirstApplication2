@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.etsn05.grupp2.ViewModels.SensorActivity">
 
+
     <Button
         android:text="Get"
         android:layout_width="wrap_content"

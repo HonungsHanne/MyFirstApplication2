@@ -12,21 +12,10 @@ public class SensorModel extends DeviceModel {
     public String humidity;
     public String magnetmoeter;
     public String accelorometer;
-    public String gyroscopeX;
-    public String gyroscopeY;
-    public String gyroscopeZ;
+    public String gyroscope;
 
     public SensorModel(String id, String name, String deviceAddress, String status){
         super(id,name,deviceAddress,status);
     }
-
-    public void setTemperature(String temp) {
-        temperature = temp;
-    }
-
-    public void setPressure(String pre) {
-        pressure = pre;
-    }
-
 
 }

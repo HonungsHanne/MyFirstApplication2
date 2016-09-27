@@ -1,5 +1,6 @@
 package Connection;
 
+import android.bluetooth.BluetoothClass;
 import android.os.AsyncTask;
 import android.widget.Switch;
 
@@ -11,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
@@ -180,8 +182,9 @@ public class ConnectionHandler {
         }
     }
 
-    public void updateMagnometer(SensorModel m) { try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "humidity", "");
+    public void updateMagnometer(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "magnometer", "");
             c.execute();
             ArrayList<JSONObject> list = c.getReturn();
             JSONObject json = list.get(0);
@@ -189,5 +192,61 @@ public class ConnectionHandler {
         } catch(JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateAccelerometer(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "accelerometer", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.accelorometer = (String) json.get("value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateGyroscope(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "gyroscope", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.gyroscope = (String) json.get("value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateColor(LightbulbModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "color", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.color = (String) json.get("value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<DeviceModel> getDevices() {
+        ArrayList<DeviceModel> l = new ArrayList<DeviceModel>();
+        try {
+            IOConnection c = new IOConnection("GET", "/device", "", "", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            for (JSONObject json : list) {
+                if(json.get("name").equals("Nexturn")) {
+                    l.add((DeviceModel) new LightbulbModel(json.getString("id"), json.getString("name"), json.getString("deviceAddress"), json.getString("status")));
+                } else if(json.get("name").equals("WICED Sense2 Kit")) {
+                    l.add((DeviceModel) new SensorModel(json.getString("id"), json.getString("name"), json.getString("deviceAddress"), json.getString("status")));
+                }
+            }
+        } catch(JSONException e) {
+            e.printStackTrace();
+        }
+
+        return l;
     }
 }

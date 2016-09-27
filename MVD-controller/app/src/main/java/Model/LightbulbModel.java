@@ -6,11 +6,11 @@ package Model;
 
 public class LightbulbModel extends DeviceModel {
 
-    public String red = "0";
-    public String green = "0";
-    public String blue = "0";
-    public String white = "0";
-    public String color = "#00000000";
+    public String red;
+    public String green;
+    public String blue;
+    public String white;
+    public String color;
     ////String deviceId;
     //String name;
     //String address;

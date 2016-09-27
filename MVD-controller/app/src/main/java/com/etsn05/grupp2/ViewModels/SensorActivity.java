@@ -15,6 +15,7 @@ import Connection.ConnectionHandler;
 import Model.DeviceModel;
 
 
+
 public class SensorActivity extends AppCompatActivity {
     TextView StatusField;
     DeviceModel sensor;
@@ -34,6 +35,7 @@ public class SensorActivity extends AppCompatActivity {
         sensor = (DeviceModel) getIntent().getSerializableExtra("DeviceModel");
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -42,7 +44,9 @@ public class SensorActivity extends AppCompatActivity {
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         textTemperature.setText("very hot");
-        //textPressure.setText(ch.doInBackground("PRESSURE"));
+        /* ch.updateTemp(sensor);
+        textTemperature.setText(sensor.temperature)); */
+
     }
 
     public void onClickGetPressure(View view) {

@@ -46,7 +46,7 @@ public class ConnectionHandler {
             url += command;
             this.value = value;
             ret = null;
-            if(!id.isEmpty() && type.equals("PUT")){
+            if(id.isEmpty() && type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
@@ -271,7 +271,9 @@ public class ConnectionHandler {
         }
     }
     public void setColor(LightbulbModel lightBulb) {
-       
+            IOConnection c = new IOConnection("PUT", "device", lightBulb.id, "color", lightBulb.color);
+            c.execute();
+
     }
 
 

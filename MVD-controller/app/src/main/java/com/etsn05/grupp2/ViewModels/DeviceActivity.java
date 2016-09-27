@@ -34,16 +34,6 @@ public class DeviceActivity extends AppCompatActivity {
 
 
         devices=new ArrayList<DeviceModel>();
-        devices.add(new DeviceModel("1","name1","ip1","on"));
-        devices.add(new DeviceModel("2","name2","ip2","off"));
-        devices.add(new DeviceModel("3","name3","ip3","on"));
-        devices.add(new DeviceModel("4","name4","ip4","off"));
-        devices.add(new DeviceModel("5","name4","ip4","off"));
-        devices.add(new DeviceModel("6","name4","ip4","off"));
-        devices.add(new DeviceModel("7","name4","ip4","off"));
-        devices.add(new DeviceModel("8","name4","ip4","off"));
-        devices.add(new DeviceModel("9","name4","ip4","off"));
-        devices.add(new DeviceModel("10","name4","ip4","off"));
 
         adapter=new ArrayAdapter<DeviceModel>(this,R.layout.list_device,devices);
         ListView listView=(ListView) findViewById(R.id.DeviceList);
@@ -69,6 +59,17 @@ public class DeviceActivity extends AppCompatActivity {
     public void onClickGetDevices(View view) {
         //ch=new ConnectionHandler();
         //System.out.println(ch.execute());
+        devices.add(new DeviceModel("1","name1","ip1","on"));
+        devices.add(new DeviceModel("2","name2","ip2","off"));
+        devices.add(new DeviceModel("3","name3","ip3","on"));
+        devices.add(new DeviceModel("4","name4","ip4","off"));
+        devices.add(new DeviceModel("5","name4","ip4","off"));
+        devices.add(new DeviceModel("6","name4","ip4","off"));
+        devices.add(new DeviceModel("7","name4","ip4","off"));
+        devices.add(new DeviceModel("8","name4","ip4","off"));
+        devices.add(new DeviceModel("9","name4","ip4","off"));
+        devices.add(new DeviceModel("10","name4","ip4","off"));
+        adapter.notifyDataSetChanged();
         view.startAnimation(buttonClick);
 
     }
@@ -77,9 +78,11 @@ public class DeviceActivity extends AppCompatActivity {
     public void onClickControlDevice(View view) {
         view.startAnimation(buttonClick);
         Intent intent = new Intent(this, SensorActivity.class);
+        intent.putExtra("DeviceModel",selected);
         // EditText editText = (EditText) findViewById(R.id.edit_message);
         // String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
+
         startActivity(intent);
 
     }
@@ -91,6 +94,10 @@ public class DeviceActivity extends AppCompatActivity {
     }
 
     public void updateView(){
+
+    }
+
+    public void onBackPressed(){
 
     }
 }

@@ -12,7 +12,7 @@ public class DeviceModel {
 
 
     public DeviceModel(){}
-    
+
     public String id() {
         return id;
     }

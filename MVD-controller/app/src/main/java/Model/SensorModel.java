@@ -5,7 +5,7 @@ package Model;
  */
 
 
-public class SensorModel {
+public class SensorModel extends DeviceModel {
     String status;
     String temperature;
     String pressure;

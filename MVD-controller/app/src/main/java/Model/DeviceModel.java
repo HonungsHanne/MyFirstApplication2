@@ -1,21 +1,25 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * Created by dee on 2016-09-26.
  */
 
-public class DeviceModel {
+public class DeviceModel implements Serializable {
     public String id;
     public String name;
     public String deviceAdress;
     public String status;
 
-    public DeviceModel(String deviceID, String name, String address,String status){
-        this.id=deviceID;
+
+    public DeviceModel(String id, String name, String deviceAdress, String status){
+        this.id=id;
         this.name=name;
-        this.deviceAdress=address;
+        this.deviceAdress=deviceAdress;
         this.status=status;
     }
+
     public String id() {
         return id;
     }

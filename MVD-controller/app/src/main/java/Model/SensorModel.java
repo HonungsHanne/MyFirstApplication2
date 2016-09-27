@@ -10,7 +10,7 @@ public class SensorModel extends DeviceModel {
     public String temperature;
     public String pressure;
     public String humidity;
-    public String magnetmoeter;
+    public String magnometer;
     public String accelorometer;
     public String gyroscope;
 

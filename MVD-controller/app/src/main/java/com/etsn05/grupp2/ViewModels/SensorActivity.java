@@ -5,17 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import Connection.ConnectionHandler;
-import Model.DeviceModel;
-
+import Model.SensorModel;
 
 
 public class SensorActivity extends AppCompatActivity {
     TextView StatusField;
-    DeviceModel sensor;
+    SensorModel sensor;
     ConnectionHandler ch;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -28,7 +24,7 @@ public class SensorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sensor);
         ch = new ConnectionHandler();
         this.StatusField = (TextView) findViewById(R.id.textID);
-        sensor = (DeviceModel) getIntent().getSerializableExtra("DeviceModel");
+        sensor = (SensorModel) getIntent().getSerializableExtra("DeviceModel");
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
 
@@ -36,37 +32,45 @@ public class SensorActivity extends AppCompatActivity {
 
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
-        textTemperature.setText("very hot");
-        /* ch.updateTemp(sensor);
-        textTemperature.setText(sensor.temperature)); */
+        ch.updateTemp(sensor);
+        textTemperature.setText(sensor.temperature);
 
     }
 
     public void onClickGetPressure(View view) {
         TextView textPressure = (TextView) findViewById(R.id.textPressure);
-        textPressure.setText("Much pressure");
         //textPressure.setText(ch.doInBackground("PRESSURE"));
+        ch.updatePressure(sensor);
+        textPressure.setText(sensor.pressure);
 
     }
 
     public void onClickGetHumidity(View view) {
         TextView textHumidity = (TextView) findViewById(R.id.textHumidity);
-        textHumidity.setText("so moist");
+        ch.updateHumidity(sensor);
+        textHumidity.setText(sensor.humidity);
+
     }
 
     public void onClickGetMagnetometer(View view) {
         TextView textMagnet = (TextView) findViewById(R.id.textMagnet);
-        textMagnet.setText("much magnets wow");
+        ch.updateMagnometer(sensor);
+        textMagnet.setText(sensor.magnometer);
+
     }
 
     public void onClickGetGyroscope(View view) {
         TextView textGyrocope = (TextView) findViewById(R.id.textGyroscope);
-        textGyrocope.setText("im spinning! woooo");
+        ch.updateGyroscope(sensor);
+        textGyrocope.setText(sensor.gyroscope);
+
     }
 
     public void onClickGetAccelerometer(View view) {
         TextView textAccelerometer = (TextView) findViewById(R.id.textAccelerometer);
-        textAccelerometer.setText("OH GOD THE SPEED");
+        ch.updateAccelerometer(sensor);
+        textAccelerometer.setText(sensor.accelorometer);
+
     }
 
     public void onClickClearAll(View view) {

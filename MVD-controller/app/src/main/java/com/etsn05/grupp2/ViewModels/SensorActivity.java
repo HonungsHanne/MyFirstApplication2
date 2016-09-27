@@ -27,10 +27,13 @@ public class SensorActivity extends AppCompatActivity {
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         textTemperature.setText("very hot");
+        //textPressure.setText(ch.doInBackground("PRESSURE"));
     }
     public void onClickGetPressure(View view){
         TextView textPressure = (TextView) findViewById(R.id.textPressure);
         textPressure.setText("Much pressure");
+        //textPressure.setText(ch.doInBackground("PRESSURE"));
+
     }
 
     public void onClickGetHumidity(View view) {

@@ -13,7 +13,12 @@ public class DeviceModel implements Serializable {
     public String status;
 
 
-    public DeviceModel(){}
+    public DeviceModel(String id, String name, String deviceAdress, String status){
+        this.id=id;
+        this.name=name;
+        this.deviceAdress=deviceAdress;
+        this.status=status;
+    }
 
     public String id() {
         return id;

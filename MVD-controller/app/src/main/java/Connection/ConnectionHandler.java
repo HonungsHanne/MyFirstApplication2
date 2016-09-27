@@ -2,6 +2,9 @@ package Connection;
 
 import android.os.AsyncTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,10 +18,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import Model.*;
+import Model.DeviceModel;
+import Model.LightbulbModel;
+import Model.SensorModel;
 
 
 /**
@@ -27,7 +29,6 @@ import Model.*;
 
 public class ConnectionHandler {
     public static final String USER_AGENT = "Chrome";
-
 
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
         private String type;
@@ -46,14 +47,14 @@ public class ConnectionHandler {
             url += command;
             this.value = value;
             ret = null;
-            if(!id.isEmpty() && type.equals("PUT")){
+            if(!id.isEmpty() && !type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
                 url += "/" + id +"/" + sensorType;
             }
 
-
+            System.out.println(url);
         }
 
         //will run before doInBackground. Could be used to setup a thinking icon
@@ -110,12 +111,19 @@ public class ConnectionHandler {
                         }
                         break;
                     case "PUT":
+                        conn.setRequestProperty("Content-Type","application/json");
+                        rootObject = new JSONObject();
+                        System.out.println(id);
+                        System.out.println(value);
                         rootObject.put("deviceAddress", id);
                         rootObject.put("value",value);
                         conn.setDoOutput(true);
+                        System.out.println(rootObject.toString());
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
+                        out.flush();
                         out.close();
+                        System.out.println(conn.getResponseCode());
                         break;
                     default:
                         throw new IllegalArgumentException("Wrong HTTP method TYPE");
@@ -299,5 +307,9 @@ public class ConnectionHandler {
         }
 
         return l;
+    }
+
+    public void updateStatus(boolean isChecked) {
+        new IOConnection("PUT","device","90:59:AF:2A:B9:F7","status","1").execute();
     }
 }

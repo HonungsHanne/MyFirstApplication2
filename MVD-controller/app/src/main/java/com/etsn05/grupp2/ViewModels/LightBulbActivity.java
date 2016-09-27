@@ -1,10 +1,9 @@
 package com.etsn05.grupp2.ViewModels;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import Connection.ConnectionHandler;
@@ -23,12 +22,10 @@ public class LightBulbActivity extends AppCompatActivity {
         lightBulb = (LightbulbModel) getIntent().getSerializableExtra("DeviceModel");
         TextView title = (TextView) findViewById(R.id.titleLightBulb);
         title.setText(lightBulb.id + ", " + lightBulb.name + ", " + lightBulb.deviceAdress);
+        if(lightBulb.status.equals("1")){
+            ((Switch)findViewById(R.id.switch1)).setChecked(true);
+        }
         ch = new ConnectionHandler();
-
-
-
-
-
     }
 
 

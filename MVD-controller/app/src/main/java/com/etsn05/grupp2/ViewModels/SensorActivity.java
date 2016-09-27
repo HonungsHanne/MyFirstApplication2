@@ -1,8 +1,10 @@
 package com.etsn05.grupp2.ViewModels;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import Connection.ConnectionHandler;
@@ -25,9 +27,30 @@ public class SensorActivity extends AppCompatActivity {
         ch = new ConnectionHandler();
         this.StatusField = (TextView) findViewById(R.id.textID);
         sensor = (SensorModel) getIntent().getSerializableExtra("DeviceModel");
+        Switch sw = ((Switch)findViewById(R.id.switch1));
+        if(sensor.status.equals("1")){
+            sw.setChecked(true);
+        }
 
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked){
+                    ch.updateStatus(isChecked);
+                    System.out.println("hej");
+                } else {
+                    ch.updateStatus(isChecked);
+                    System.out.println("då");
+                }
+            }
+        });
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
+
+    }
+
+    public void onClickGetStatus(View view){
 
     }
 

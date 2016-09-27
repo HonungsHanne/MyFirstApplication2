@@ -4,7 +4,7 @@ package Model;
  * Created by Kevin on 2016-09-27.
  */
 
-public class LightbulbModel {
+public class LightbulbModel extends DeviceModel {
     String red = "0";
     String green = "0";
     String blue = "0";

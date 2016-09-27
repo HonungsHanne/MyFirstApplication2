@@ -54,18 +54,10 @@ public class DeviceActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Get Device button */
     public void onClickGetDevices(View view) {
-        //ch=new ConnectionHandler();
-        //System.out.println(ch.execute());
-        devices.add(new SensorModel("1","name1","ip1","on"));
-        devices.add(new SensorModel("2","name2","ip2","off"));
-        devices.add(new LightbulbModel("3","name3","ip3","on"));
-        devices.add(new SensorModel("4","name4","ip4","off"));
-        devices.add(new SensorModel("5","name4","ip4","off"));
-        devices.add(new LightbulbModel("6","name4","ip4","off"));
-        devices.add(new SensorModel("7","name4","ip4","off"));
-        devices.add(new SensorModel("8","name4","ip4","off"));
-        devices.add(new SensorModel("9","name4","ip4","off"));
-        devices.add(new LightbulbModel("10","name4","ip4","off"));
+        ch=new ConnectionHandler();
+        for(DeviceModel dm: ch.getDevices()){
+            devices.add(dm);
+        }
         adapter.notifyDataSetChanged();
         view.startAnimation(buttonClick);
 
@@ -76,7 +68,7 @@ public class DeviceActivity extends AppCompatActivity {
         view.startAnimation(buttonClick);
         if(selected instanceof SensorModel) {
             Intent intent = new Intent(this, SensorActivity.class);
-            intent.putExtra("DeviceModel", selected);
+            intent.putExtra("DeviceModel", (SensorModel)selected);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, LightBulbActivity.class);

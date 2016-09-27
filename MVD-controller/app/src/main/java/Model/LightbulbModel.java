@@ -5,6 +5,7 @@ package Model;
  */
 
 public class LightbulbModel extends DeviceModel {
+
     public String red = "0";
     public String green = "0";
     public String blue = "0";
@@ -14,6 +15,7 @@ public class LightbulbModel extends DeviceModel {
     //String name;
     //String address;
     //String status;
+
 
     public LightbulbModel(String deviceId, String name, String address, String status) {
         super(deviceId,name,address,status);

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import Connection.ConnectionHandler;
 import Model.DeviceModel;
+import Model.LightbulbModel;
 import Model.SensorModel;
 
 public class DeviceActivity extends AppCompatActivity {

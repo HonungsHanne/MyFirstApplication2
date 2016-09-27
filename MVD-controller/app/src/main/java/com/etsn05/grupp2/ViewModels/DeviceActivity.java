@@ -70,9 +70,9 @@ public class DeviceActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SensorActivity.class);
             intent.putExtra("DeviceModel", (SensorModel)selected);
             startActivity(intent);
-        } else {
+        } else if(selected instanceof LightbulbModel){
             Intent intent = new Intent(this, LightBulbActivity.class);
-            intent.putExtra("DeviceModel", selected);
+            intent.putExtra("DeviceModel", (LightbulbModel)selected);
             startActivity(intent);
         }
 

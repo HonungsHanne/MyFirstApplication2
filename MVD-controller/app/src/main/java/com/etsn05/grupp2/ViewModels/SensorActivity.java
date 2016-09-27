@@ -25,6 +25,7 @@ public class SensorActivity extends AppCompatActivity {
         ch = new ConnectionHandler();
         this.StatusField = (TextView) findViewById(R.id.textID);
         sensor = (SensorModel) getIntent().getSerializableExtra("DeviceModel");
+
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
 

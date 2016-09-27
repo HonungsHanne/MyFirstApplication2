@@ -11,11 +11,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import Model.*;
 
 
 /**
@@ -26,21 +29,23 @@ public class ConnectionHandler {
     public static final String USER_AGENT = "Chrome";
 
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
-        private String type = "";
-        private String command = "";
-        private int id = 0;
-        private String sensorType = "";
+        private String type;
+        private String command;
+        private String id;
+        private String sensorType;
         private String url = "http://vm39.cs.lth.se:9000/";
         private String value;
+        private ArrayList<JSONObject> ret;
 
-        private IOConnection(String type, String command, int id, String sensorType, String value) {
+        private IOConnection(String type, String command, String id, String sensorType, String value) {
             this.type = type;
             this.command = command;
             this.id = id;
             this.sensorType = sensorType;
             url += command;
             this.value = value;
-            if(id != -1 && type.equals("PUT")){
+            ret = null;
+            if(!id.isEmpty() && type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
@@ -103,7 +108,7 @@ public class ConnectionHandler {
                         }
                         break;
                     case "PUT":
-                        rootObject.put("deviceAddress", String.valueOf(id));
+                        rootObject.put("deviceAddress", id);
                         rootObject.put("value",value);
                         conn.setDoOutput(true);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
@@ -131,7 +136,58 @@ public class ConnectionHandler {
 
         //This will be executed when doInbackground is done
         protected void onPostExecute(ArrayList<JSONObject> jsonArray) {
+            ret = jsonArray;
+        }
 
+        public ArrayList<JSONObject> getReturn() {
+            return ret;
+        }
+    }
+
+    public void updateTemp(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "temperature", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.temperature = (String) json.get("value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePressure(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "pressure", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.pressure = (String) json.get("value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateHumidity(SensorModel m) {
+        try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "humidity", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.humidity = (String) json.get("value");
+        } catch(JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateMagnometer(SensorModel m) { try {
+            IOConnection c = new IOConnection("GET", "data/device", m.id(), "humidity", "");
+            c.execute();
+            ArrayList<JSONObject> list = c.getReturn();
+            JSONObject json = list.get(0);
+            m.magnetmoeter = (String) json.get("value");
+        } catch(JSONException e) {
+            e.printStackTrace();
         }
     }
 }

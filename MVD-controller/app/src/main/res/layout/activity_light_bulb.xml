@@ -50,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:inputType="text"
-            android:text="Value"
+            android:text="0x00"
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:id="@+id/textRed" />
@@ -63,7 +63,7 @@
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#42adf4"
+        android:background="#237dbc"
 
         android:id="@+id/linearLayout1">
         <TextView
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:inputType="text"
-            android:text="Value"
+            android:text="0x00"
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:inputType="text"
-            android:text="Value"
+            android:text="0x00"
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:inputType="text"
-            android:text="Value"
+            android:text="0x00"
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"

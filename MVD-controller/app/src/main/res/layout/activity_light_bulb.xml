@@ -53,7 +53,8 @@
             android:text="0x00"
             android:ems="10"
             android:layout_below="@+id/Pressure"
-            android:id="@+id/textRed" />
+            android:id="@+id/textRed"
+            />
     </LinearLayout>
 
     <LinearLayout

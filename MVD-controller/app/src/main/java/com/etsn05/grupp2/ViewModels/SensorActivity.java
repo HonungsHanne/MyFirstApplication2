@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import Connection.ConnectionHandler;
+import Model.DeviceModel;
 import Model.SensorModel;
 
 
 public class SensorActivity extends AppCompatActivity {
     TextView t;
+    DeviceModel model;
     SensorModel sensor;
     ConnectionHandler ch;
     @Override
@@ -20,14 +22,16 @@ public class SensorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sensor);
         ch = new ConnectionHandler();
         this.t = (TextView) findViewById(R.id.textID);
-        t.setText("Mickes bajs");
+        t.setText("Sensor status");
 
     }
 
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         textTemperature.setText("very hot");
-        //textPressure.setText(ch.doInBackground("PRESSURE"));
+        /* ch.updateTemp(sensor);
+        textTemperature.setText(sensor.temperature)); */
+
     }
     public void onClickGetPressure(View view){
         TextView textPressure = (TextView) findViewById(R.id.textPressure);

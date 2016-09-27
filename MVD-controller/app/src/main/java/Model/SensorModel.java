@@ -4,7 +4,7 @@ package Model;
  * Created by dee on 2016-09-26.
  */
 
-public class SensorModel {
+public class SensorModel extends DeviceModel {
     boolean status;
     double temperature;
     double pressure;

@@ -10,11 +10,8 @@ public class DeviceModel {
     public int deviceAdress;
     public boolean status;
 
-    public DeviceModel(int deviceID, String name, int address,boolean status){
-        this.id=deviceID;
-        this.name=name;
-        this.deviceAdress=address;
-        this.status=status;
+    public DeviceModel(){
+
     }
     public int id() {
         return id;

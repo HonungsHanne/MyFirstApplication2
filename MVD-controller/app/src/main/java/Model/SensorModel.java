@@ -4,7 +4,9 @@ package Model;
  * Created by dee on 2016-09-26.
  */
 
-public class SensorModel  {
+
+
+public class SensorModel extends DeviceModel {
     String status;
     String temperature;
     String pressure;

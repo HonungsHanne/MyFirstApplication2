@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ import org.json.JSONObject;
  * Created by dee on 2016-09-26.
  */
 
-public class ConnectionHandler extends AsyncTask<Void,Void,String>{
+public class ConnectionHandler extends AsyncTask<Void,Void,ArrayList>{
     public static final String USER_AGENT = "Chrome";
 
     //will run before doInBackground. Could be used to setup a thinking icon
@@ -43,7 +44,7 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected ArrayList<JSONObject> doInBackground(Void... params) {
         HttpURLConnection conn=null;
         JSONObject rootObject = null;
         String strJSON;
@@ -51,12 +52,13 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
         String text2 = "";
         String json = "{";
         String jsonEnd = "}";
+        ArrayList<JSONObject> jsonArray = new ArrayList<JSONObject>();
         try {
 
             conn=(HttpURLConnection)(new URL("http://vm39.cs.lth.se:9000/device").openConnection());
             conn.setRequestMethod("GET");
             conn.setRequestProperty("User-Agent", USER_AGENT);
-            InputStream is=new BufferedInputStream(conn.getInputStream());
+            InputStream is= new BufferedInputStream(conn.getInputStream());
             //test
             text = getASCIIContentFromEntity(is);
             // Removes all brackets and curlybrackets from start and end of string.
@@ -67,8 +69,10 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
                 //Construct our "new" JSON objects.
                 s = "{" + s + "}";
                 rootObject = new JSONObject(s);
-                text2 = rootObject.getString("id");
-                System.out.println(s + text2);
+                jsonArray.add(rootObject);
+
+                //text2 = rootObject.getString("id");
+                //System.out.println(s + text2);
             }
 
 
@@ -78,7 +82,7 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
             p.printStackTrace();
         }
       //  System.out.println(text2);
-        return text2;
+        return jsonArray;
     }
 
     //This will be run along with doInback. Could be used to update a progressbar
@@ -87,7 +91,7 @@ public class ConnectionHandler extends AsyncTask<Void,Void,String>{
     }
 
     //This will be executed when doInbackground is done
-    protected void onPostExecute(String result){
+    protected void onPostExecute(ArrayList<JSONObject> jsonArray){
 
     }
 }

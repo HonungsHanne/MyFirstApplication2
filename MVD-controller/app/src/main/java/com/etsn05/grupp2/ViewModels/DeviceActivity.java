@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import Connection.ConnectionHandler;
 import Model.DeviceModel;
-import Model.LightbulbModel;
 import Model.SensorModel;
 
 public class DeviceActivity extends AppCompatActivity {
@@ -23,7 +22,6 @@ public class DeviceActivity extends AppCompatActivity {
     private ConnectionHandler ch;
     private ArrayAdapter<DeviceModel> adapter;
     private AlphaAnimation buttonClick=new AlphaAnimation(1F,0.8F);
-
 
 
     @Override

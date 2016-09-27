@@ -5,19 +5,19 @@ package Model;
  */
 
 public class DeviceModel {
-    public int id;
+    public String id;
     public String name;
-    public int deviceAdress;
-    public boolean status;
+    public String deviceAdress;
+    public String status;
 
-    public DeviceModel(){
 
-    }
-    public int id() {
+    public DeviceModel(){}
+    
+    public String id() {
         return id;
     }
 
-    public void setDeviceId(int deviceID) {
+    public void setDeviceId(String deviceID) {
         this.id = deviceID;
     }
 
@@ -29,19 +29,23 @@ public class DeviceModel {
         this.name = name;
     }
 
-    public int getDeviceAdress() {
+    public String getDeviceAdress() {
         return deviceAdress;
     }
 
-    public void setAddress(int address) {
+    public void setAddress(String address) {
         this.deviceAdress = address;
     }
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String toString(){
+        return id + " " + name + " " + deviceAdress;
     }
 }

@@ -53,6 +53,7 @@
 
     <Button
         android:text="Clear All"
+        android:background="#ff3a44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -94,6 +95,7 @@
 
     <TextView
         android:text="Humidity:"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/button3"
@@ -154,6 +156,7 @@
 
     <TextView
         android:text="Magnet:"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Magnet"
@@ -164,6 +167,7 @@
 
     <TextView
         android:text="Pressure:"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Pressure"
@@ -184,6 +188,7 @@
 
     <TextView
         android:text="Temperature:"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Temperature"
@@ -194,6 +199,7 @@
 
     <TextView
         android:text="Accelerometer"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Accelerometer"
@@ -204,6 +210,7 @@
 
     <Button
         android:text="Get All"
+        android:background="#2dce48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button7"
@@ -222,6 +229,7 @@
 
     <TextView
         android:text="Gyroscope:"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Gyroscope"

@@ -40,7 +40,7 @@
             android:text="Red"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -50,7 +50,7 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:id="@+id/editText2" />
     </LinearLayout>
 
@@ -68,7 +68,7 @@
             android:text="Blue"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
 
@@ -78,7 +78,7 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
         android:id="@+id/editText2" />
     </LinearLayout>
@@ -94,7 +94,7 @@
             android:text="Green"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -103,7 +103,7 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
         android:id="@+id/editText2" />
     </LinearLayout>
@@ -121,7 +121,7 @@
             android:text="White"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -130,7 +130,7 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
             android:id="@+id/editText2" />
     </LinearLayout>

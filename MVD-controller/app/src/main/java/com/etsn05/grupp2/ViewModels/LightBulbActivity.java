@@ -1,8 +1,10 @@
 package com.etsn05.grupp2.ViewModels;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import Connection.ConnectionHandler;
@@ -18,6 +20,7 @@ public class LightBulbActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_bulb);
+
 
 
     }

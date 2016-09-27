@@ -131,7 +131,7 @@ public class ConnectionHandler {
 
         //This will be executed when doInbackground is done
         protected void onPostExecute(ArrayList<JSONObject> jsonArray) {
-            
+
         }
     }
 }

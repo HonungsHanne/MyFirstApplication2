@@ -37,10 +37,11 @@
         android:weightSum="1"
         android:id="@+id/linearLayout">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Red"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -50,8 +51,8 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
-            android:id="@+id/editText2" />
+            android:layout_below="@+id/Pressure"
+            android:id="@+id/textRed" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,10 +66,11 @@
 
         android:id="@+id/linearLayout1">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Blue"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
 
@@ -78,9 +80,9 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-        android:id="@+id/editText2" />
+        android:id="@+id/textBlue" />
     </LinearLayout>
 
     <LinearLayout
@@ -91,10 +93,11 @@
         android:background="@color/colorPrimary"
         android:id="@+id/linearLayout2">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Green"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -103,9 +106,9 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-        android:id="@+id/editText2" />
+        android:id="@+id/textGreen" />
     </LinearLayout>
 
     <LinearLayout
@@ -118,10 +121,11 @@
 
 
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="White"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:id="@+id/textView2"
+            android:id="@+id/Pressure"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -130,9 +134,9 @@
             android:inputType="text"
             android:text="Value"
             android:ems="10"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-            android:id="@+id/editText2" />
+            android:id="@+id/textWhite" />
     </LinearLayout>
 
     <LinearLayout

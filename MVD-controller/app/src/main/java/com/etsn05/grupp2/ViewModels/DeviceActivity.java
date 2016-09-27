@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import Connection.ConnectionHandler;
 import Model.DeviceModel;
+import Model.LightbulbModel;
+import Model.SensorModel;
 
 public class DeviceActivity extends AppCompatActivity {
     private ArrayList<DeviceModel> devices;
@@ -28,35 +30,20 @@ public class DeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
-
         Button b=(Button) findViewById(R.id.ButtonControlDevice);
         b.setClickable(false);
 
 
         devices=new ArrayList<DeviceModel>();
-        devices.add(new DeviceModel("1","name1","ip1","on"));
-        devices.add(new DeviceModel("2","name2","ip2","off"));
-        devices.add(new DeviceModel("3","name3","ip3","on"));
-        devices.add(new DeviceModel("4","name4","ip4","off"));
-        devices.add(new DeviceModel("5","name4","ip4","off"));
-        devices.add(new DeviceModel("6","name4","ip4","off"));
-        devices.add(new DeviceModel("7","name4","ip4","off"));
-        devices.add(new DeviceModel("8","name4","ip4","off"));
-        devices.add(new DeviceModel("9","name4","ip4","off"));
-        devices.add(new DeviceModel("10","name4","ip4","off"));
 
         adapter=new ArrayAdapter<DeviceModel>(this,R.layout.list_device,devices);
         ListView listView=(ListView) findViewById(R.id.DeviceList);
         listView.setAdapter(adapter);
         listView.setTextFilterEnabled(true);
-        //listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        //listView.setSelector(android.R.color.darker_gray);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // When clicked, show a toast with the TextView text
-
-                System.out.println(parent.getAdapter().getItem(position));
+                selected=adapter.getItem(position);
                 Button b=(Button) findViewById(R.id.ButtonControlDevice);
                 b.setClickable(true);
             }
@@ -69,6 +56,17 @@ public class DeviceActivity extends AppCompatActivity {
     public void onClickGetDevices(View view) {
         //ch=new ConnectionHandler();
         //System.out.println(ch.execute());
+        devices.add(new SensorModel("1","name1","ip1","on"));
+        devices.add(new SensorModel("2","name2","ip2","off"));
+        devices.add(new LightbulbModel("3","name3","ip3","on"));
+        devices.add(new SensorModel("4","name4","ip4","off"));
+        devices.add(new SensorModel("5","name4","ip4","off"));
+        devices.add(new LightbulbModel("6","name4","ip4","off"));
+        devices.add(new SensorModel("7","name4","ip4","off"));
+        devices.add(new SensorModel("8","name4","ip4","off"));
+        devices.add(new SensorModel("9","name4","ip4","off"));
+        devices.add(new LightbulbModel("10","name4","ip4","off"));
+        adapter.notifyDataSetChanged();
         view.startAnimation(buttonClick);
 
     }
@@ -76,11 +74,15 @@ public class DeviceActivity extends AppCompatActivity {
     /** Called when the user clicks Control Device */
     public void onClickControlDevice(View view) {
         view.startAnimation(buttonClick);
-        Intent intent = new Intent(this, SensorActivity.class);
-        // EditText editText = (EditText) findViewById(R.id.edit_message);
-        // String message = editText.getText().toString();
-        //intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        if(selected instanceof SensorModel) {
+            Intent intent = new Intent(this, SensorActivity.class);
+            intent.putExtra("DeviceModel", selected);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, LightBulbActivity.class);
+            intent.putExtra("DeviceModel", selected);
+            startActivity(intent);
+        }
 
     }
 
@@ -90,7 +92,7 @@ public class DeviceActivity extends AppCompatActivity {
         System.out.println(selectedValue);
     }
 
-    public void updateView(){
+    public void onBackPressed(){
 
     }
 }

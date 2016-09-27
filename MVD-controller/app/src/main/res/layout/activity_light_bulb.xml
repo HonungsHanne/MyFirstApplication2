@@ -52,7 +52,7 @@
             android:text="Value"
             android:ems="10"
             android:layout_below="@+id/Pressure"
-            android:id="@+id/editText2" />
+            android:id="@+id/textRed" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +82,7 @@
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-        android:id="@+id/editText2" />
+        android:id="@+id/textBlue" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +108,7 @@
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-        android:id="@+id/editText2" />
+        android:id="@+id/textGreen" />
     </LinearLayout>
 
     <LinearLayout
@@ -136,7 +136,7 @@
             android:ems="10"
             android:layout_below="@+id/Pressure"
             android:layout_weight="0.5"
-            android:id="@+id/editText2" />
+            android:id="@+id/textWhite" />
     </LinearLayout>
 
     <LinearLayout

@@ -5,11 +5,11 @@ package Model;
  */
 
 public class LightbulbModel extends DeviceModel {
-    String red = "0";
-    String green = "0";
-    String blue = "0";
-    String white = "0";
-    String[] color = new String[4];
+    public String red = "0";
+    public String green = "0";
+    public String blue = "0";
+    public String white = "0";
+    public String color = "#00000000";
     ////String deviceId;
     //String name;
     //String address;

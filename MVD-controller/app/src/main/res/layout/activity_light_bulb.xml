@@ -37,6 +37,7 @@
         android:weightSum="1"
         android:id="@+id/linearLayout">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Red"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -65,6 +66,7 @@
 
         android:id="@+id/linearLayout1">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Blue"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -91,6 +93,7 @@
         android:background="@color/colorPrimary"
         android:id="@+id/linearLayout2">
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="Green"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -118,6 +121,7 @@
 
 
         <TextView
+            android:layout_marginLeft="10dp"
             android:text="White"
             android:layout_height="wrap_content"
             android:layout_width="0dp"

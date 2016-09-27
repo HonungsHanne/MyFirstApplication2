@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class DeviceActivity extends AppCompatActivity {
     private DeviceModel selected;
     private ConnectionHandler ch;
     private ArrayAdapter<DeviceModel> adapter;
+    private AlphaAnimation buttonClick=new AlphaAnimation(1F,0.8F);
 
 
 
@@ -30,17 +32,25 @@ public class DeviceActivity extends AppCompatActivity {
         Button b=(Button) findViewById(R.id.ButtonControlDevice);
         b.setClickable(false);
 
+
         devices=new ArrayList<DeviceModel>();
         devices.add(new DeviceModel("1","name1","ip1","on"));
         devices.add(new DeviceModel("2","name2","ip2","off"));
         devices.add(new DeviceModel("3","name3","ip3","on"));
         devices.add(new DeviceModel("4","name4","ip4","off"));
+        devices.add(new DeviceModel("5","name4","ip4","off"));
+        devices.add(new DeviceModel("6","name4","ip4","off"));
+        devices.add(new DeviceModel("7","name4","ip4","off"));
+        devices.add(new DeviceModel("8","name4","ip4","off"));
+        devices.add(new DeviceModel("9","name4","ip4","off"));
+        devices.add(new DeviceModel("10","name4","ip4","off"));
+
         adapter=new ArrayAdapter<DeviceModel>(this,R.layout.list_device,devices);
         ListView listView=(ListView) findViewById(R.id.DeviceList);
         listView.setAdapter(adapter);
         listView.setTextFilterEnabled(true);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        listView.setSelector(android.R.color.darker_gray);
+        //listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        //listView.setSelector(android.R.color.darker_gray);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -57,13 +67,15 @@ public class DeviceActivity extends AppCompatActivity {
 
     /** Called when the user clicks the Get Device button */
     public void onClickGetDevices(View view) {
-        ch=new ConnectionHandler();
-        System.out.println(ch.execute());
+        //ch=new ConnectionHandler();
+        //System.out.println(ch.execute());
+        view.startAnimation(buttonClick);
 
     }
 
     /** Called when the user clicks Control Device */
     public void onClickControlDevice(View view) {
+        view.startAnimation(buttonClick);
         Intent intent = new Intent(this, SensorActivity.class);
         // EditText editText = (EditText) findViewById(R.id.edit_message);
         // String message = editText.getText().toString();

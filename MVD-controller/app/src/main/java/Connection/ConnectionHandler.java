@@ -28,6 +28,7 @@ import Model.*;
 public class ConnectionHandler {
     public static final String USER_AGENT = "Chrome";
 
+
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
         private String type;
         private String command;
@@ -257,6 +258,7 @@ public class ConnectionHandler {
             c.execute();
             ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
+            System.out.println(json.get("value"));
             m.color = (String) json.get("value");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -268,6 +270,10 @@ public class ConnectionHandler {
             e.printStackTrace();
         }
     }
+    public void setColor(LightbulbModel lightBulb) {
+       
+    }
+
 
     public List<DeviceModel> getDevices() {
         ArrayList<DeviceModel> l = new ArrayList<DeviceModel>();

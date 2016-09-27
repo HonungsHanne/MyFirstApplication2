@@ -46,7 +46,7 @@ public class ConnectionHandler {
             url += command;
             this.value = value;
             ret = null;
-            if(id.isEmpty() && type.equals("PUT")){
+            if(id.length() == 2 && !type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
@@ -111,7 +111,7 @@ public class ConnectionHandler {
                         break;
                     case "PUT":
                         rootObject.put("deviceAddress", id);
-                        rootObject.put("value",value);
+                        rootObject.put("value", value);
                         conn.setDoOutput(true);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
@@ -271,7 +271,8 @@ public class ConnectionHandler {
         }
     }
     public void setColor(LightbulbModel lightBulb) {
-            IOConnection c = new IOConnection("PUT", "device", lightBulb.id, "color", lightBulb.color);
+        System.out.println(lightBulb.deviceAdress);
+            IOConnection c = new IOConnection("PUT", "device/value", lightBulb.deviceAdress, "", lightBulb.color);
             c.execute();
 
     }

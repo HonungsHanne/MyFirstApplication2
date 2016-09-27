@@ -62,15 +62,15 @@ public class LightBulbActivity extends AppCompatActivity {
     }
 
     public void onClickSet(View view) {
-        TextView textRed = (TextView) findViewById(R.id.textRed);
-        TextView textGreen = (TextView) findViewById(R.id.textGreen);
-        TextView textBlue = (TextView) findViewById(R.id.textBlue);
-        TextView textWhite = (TextView) findViewById(R.id.textWhite);
-        lightBulb.red = textRed.getText().toString();
-        lightBulb.green = textGreen.getText().toString();
-        lightBulb.blue = textBlue.getText().toString();
-        lightBulb.white = textWhite.getText().toString();
-        lightBulb.color =lightBulb.red+lightBulb.green+lightBulb.blue+lightBulb.white;
+       // TextView textRed = (TextView) findViewById(R.id.textRed);
+       // TextView textGreen = (TextView) findViewById(R.id.textGreen);
+       // TextView textBlue = (TextView) findViewById(R.id.textBlue);
+      //  TextView textWhite = (TextView) findViewById(R.id.textWhite);
+      //  lightBulb.red = textRed.getText().toString();
+     //   lightBulb.green = textGreen.getText().toString();
+     //   lightBulb.blue = textBlue.getText().toString();
+     //   lightBulb.white = textWhite.getText().toString();
+    //    lightBulb.color =lightBulb.red+lightBulb.green+lightBulb.blue+lightBulb.white;
         ch.setColor(lightBulb);
 
         // SEND COLORS

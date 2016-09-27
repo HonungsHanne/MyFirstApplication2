@@ -46,11 +46,11 @@ public class ConnectionHandler {
             url += command;
             this.value = value;
             ret = null;
-            if(id.length() == 2 && !type.equals("PUT")){
+            if(!id.isEmpty() && !type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
-                url += "/" + id +"/" + sensorType;
+                url += "/" + sensorType;
             }
 
 
@@ -91,7 +91,8 @@ public class ConnectionHandler {
                 System.out.println(url);
                 conn = (HttpURLConnection) (new URL(url).openConnection());
                 conn.setRequestMethod(type);
-                conn.setRequestProperty("User-Agent", USER_AGENT);
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestProperty("Accept", "application/json");
                 switch (type){
                     case "GET":
 
@@ -110,12 +111,16 @@ public class ConnectionHandler {
                         }
                         break;
                     case "PUT":
+                        rootObject = new JSONObject();
                         rootObject.put("deviceAddress", id);
                         rootObject.put("value", value);
                         conn.setDoOutput(true);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
+                        out.flush();
                         out.close();
+                        System.out.println(rootObject.toString());
+                        System.out.println(conn.getResponseCode());
                         break;
                     default:
                         throw new IllegalArgumentException("Wrong HTTP method TYPE");

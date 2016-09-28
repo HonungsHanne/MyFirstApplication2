@@ -34,14 +34,10 @@ public class SensorActivity extends AppCompatActivity {
 
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
                 if(isChecked){
-                    ch.updateStatus(isChecked);
-                    System.out.println("hej");
+                    ch.updateStatus(sensor,"1");
                 } else {
-                    ch.updateStatus(isChecked);
-                    System.out.println("då");
+                    ch.updateStatus(sensor,"0");
                 }
             }
         });

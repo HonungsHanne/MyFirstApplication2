@@ -3,6 +3,7 @@ package com.etsn05.grupp2.ViewModels;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -22,9 +23,23 @@ public class LightBulbActivity extends AppCompatActivity {
         lightBulb = (LightbulbModel) getIntent().getSerializableExtra("DeviceModel");
         TextView title = (TextView) findViewById(R.id.titleLightBulb);
         title.setText(lightBulb.id + ", " + lightBulb.name + ", " + lightBulb.deviceAdress);
+        Switch sw = ((Switch)findViewById(R.id.switch1));
         if(lightBulb.status.equals("1")){
-            ((Switch)findViewById(R.id.switch1)).setChecked(true);
+            sw.setChecked(true);
         }
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    ch.updateStatus(lightBulb,"1");
+                    //måste kolla om lightbulb fungerar
+                    lightBulb.status="1";
+                } else {
+                    ch.updateStatus(lightBulb,"0");
+                    //måste kolla om update fungerar
+                    lightBulb.status="0";
+                }
+            }
+        });
         ch = new ConnectionHandler();
     }
 

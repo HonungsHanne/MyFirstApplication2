@@ -51,7 +51,7 @@ public class ConnectionHandler {
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
-                url += "/" + id +"/" + sensorType;
+                url += "/" + sensorType;
             }
 
             System.out.println(url);
@@ -89,10 +89,10 @@ public class ConnectionHandler {
             String jsonEnd = "}";
             ArrayList<JSONObject> jsonArray = new ArrayList<JSONObject>();
             try {
-                System.out.println(url);
                 conn = (HttpURLConnection) (new URL(url).openConnection());
                 conn.setRequestMethod(type);
-                conn.setRequestProperty("User-Agent", USER_AGENT);
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestProperty("Accept", "application/json");
                 switch (type){
                     case "GET":
 
@@ -113,16 +113,14 @@ public class ConnectionHandler {
                     case "PUT":
                         conn.setRequestProperty("Content-Type","application/json");
                         rootObject = new JSONObject();
-                        System.out.println(id);
-                        System.out.println(value);
                         rootObject.put("deviceAddress", id);
-                        rootObject.put("value",value);
+                        rootObject.put("value", value);
                         conn.setDoOutput(true);
-                        System.out.println(rootObject.toString());
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
                         out.flush();
                         out.close();
+
                         System.out.println(conn.getResponseCode());
                         break;
                     default:
@@ -266,7 +264,6 @@ public class ConnectionHandler {
             c.execute();
             ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
-            System.out.println(json.get("value"));
             m.color = (String) json.get("value");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -279,7 +276,9 @@ public class ConnectionHandler {
         }
     }
     public void setColor(LightbulbModel lightBulb) {
-       
+            IOConnection c = new IOConnection("PUT", "device/value", lightBulb.deviceAdress, "", lightBulb.color);
+            c.execute();
+
     }
 
 
@@ -309,7 +308,7 @@ public class ConnectionHandler {
         return l;
     }
 
-    public void updateStatus(boolean isChecked) {
-        new IOConnection("PUT","device","90:59:AF:2A:B9:F7","status","1").execute();
+    public void updateStatus(DeviceModel model, String power) {
+        new IOConnection("PUT","device/status",model.deviceAdress,"",power).execute();
     }
 }

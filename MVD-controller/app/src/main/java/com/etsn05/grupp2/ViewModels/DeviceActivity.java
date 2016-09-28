@@ -30,6 +30,10 @@ public class DeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
         Button b=(Button) findViewById(R.id.ButtonControlDevice);
+        /**
+         *controlbutton is disabled until listview is klicked
+         *this until a list item is clicked. Requirement 6.1.5
+         */
         b.setClickable(false);
 
 
@@ -51,7 +55,9 @@ public class DeviceActivity extends AppCompatActivity {
     }
 
 
-    /** Called when the user clicks the Get Device button */
+    /** Called when the user clicks the Get Device button
+     * Implemented according to requirement 6.1.2
+     * */
     public void onClickGetDevices(View view) {
         ch=new ConnectionHandler();
         for(DeviceModel dm: ch.getDevices()){
@@ -62,7 +68,11 @@ public class DeviceActivity extends AppCompatActivity {
 
     }
 
-    /** Called when the user clicks Control Device */
+    /** Called when the user clicks Control Device
+     * view is updated to either lightbulbview or
+     * sensor view. This accordingly to requirement 6.1.6
+     * and requirement 6.1.7
+     */
     public void onClickControlDevice(View view) {
         view.startAnimation(buttonClick);
         if(selected instanceof SensorModel) {
@@ -80,7 +90,6 @@ public class DeviceActivity extends AppCompatActivity {
     /* when list is pushed*/
     public void onSelected(ListView l, View v, int position, long id){
         DeviceModel selectedValue = adapter.getItem(position);
-        System.out.println(selectedValue);
     }
 
     public void onBackPressed(){

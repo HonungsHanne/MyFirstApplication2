@@ -52,6 +52,10 @@ public class DeviceModel implements Serializable {
         this.status = status;
     }
 
+    /**
+     *Print method which print device info according to
+     * requirement 6.1.3
+     */
     public String toString(){
         return id + " " + name + " " + deviceAdress;
     }

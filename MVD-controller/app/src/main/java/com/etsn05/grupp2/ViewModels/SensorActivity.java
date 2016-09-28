@@ -10,6 +10,9 @@ import android.widget.TextView;
 import Connection.ConnectionHandler;
 import Model.SensorModel;
 
+/**
+ * Requirement 6.2.7 is implemented by default.
+ */
 
 /**
  * Activity that describes the functionality of the Sensor view.
@@ -34,10 +37,18 @@ public class SensorActivity extends AppCompatActivity {
         this.StatusField = (TextView) findViewById(R.id.textID);
         sensor = (SensorModel) getIntent().getSerializableExtra("DeviceModel");
         Switch sw = ((Switch)findViewById(R.id.switch1));
+        /**
+         * Sensor is set on/off depending on current status
+         * requirement 6.2.2
+         */
         if(sensor.status.equals("1")){
             sw.setChecked(true);
         }
-
+        /**
+         * When the on/off switch is klicked,
+         * the server is updated accordingly
+         * requirement 6.2.3
+         */
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
@@ -47,6 +58,10 @@ public class SensorActivity extends AppCompatActivity {
                 }
             }
         });
+        /**
+         * Chosen device is displayed on this format
+         * according to requirement 6.2.1
+         */
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
 
@@ -60,6 +75,10 @@ public class SensorActivity extends AppCompatActivity {
      * This method uses calls updateTemperature from ConnectionHandler to update the Temperature value in the SensorModel.
      */
 
+    /**
+     * All gett buttons below are implemented
+     * for requirement 6.2.4
+     */
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         ch.updateTemp(sensor);
@@ -141,7 +160,7 @@ public class SensorActivity extends AppCompatActivity {
         textAccelerometer.setText(sensor.accelorometer);
 
     }
-
+    
     /**The View that calls on the method.
      *
      * @param view
@@ -149,7 +168,6 @@ public class SensorActivity extends AppCompatActivity {
      *
      * This Method clears all the fields that show sensor data.
      */
-
     public void onClickClearAll(View view) {
 
         TextView text = (TextView) findViewById(R.id.textTemperature);
@@ -175,7 +193,6 @@ public class SensorActivity extends AppCompatActivity {
      *
      * This method updates all of the fields in sensor device view.
      */
-
     public void onClickGetAll(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         ch.updateTemp(sensor);

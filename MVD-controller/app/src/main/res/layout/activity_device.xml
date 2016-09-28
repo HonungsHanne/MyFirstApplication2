@@ -30,6 +30,13 @@
         android:layout_alignParentEnd="true"
         android:onClick="onClickControlDevice"/>
 
+    <!--
+    List containing devices that are fetched from the server.
+    List is scrollable according to requirement 6.1.1
+    Selected item changes color according to requirement 6.1.4
+    -->
+
+
     <ListView
         android:layout_width="wrap_content"
         android:id="@+id/DeviceList"

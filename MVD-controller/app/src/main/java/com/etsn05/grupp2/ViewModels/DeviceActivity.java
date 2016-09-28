@@ -17,6 +17,10 @@ import Model.DeviceModel;
 import Model.LightbulbModel;
 import Model.SensorModel;
 
+/**
+ * Activity that describes the functionality of the device view
+ */
+
 public class DeviceActivity extends AppCompatActivity {
     private ArrayList<DeviceModel> devices;
     private DeviceModel selected;
@@ -24,6 +28,11 @@ public class DeviceActivity extends AppCompatActivity {
     private ArrayAdapter<DeviceModel> adapter;
     private AlphaAnimation buttonClick=new AlphaAnimation(1F,0.8F);
 
+
+    /**
+     * Creates the device view
+     * @param savedInstanceState - previous saved instance of the view. Is null if no previous view is saved.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +56,15 @@ public class DeviceActivity extends AppCompatActivity {
                 b.setClickable(true);
             }
         });
-
     }
 
 
-    /** Called when the user clicks the Get Device button */
+    /**
+     * Called when the user clicks the Get Device button
+     * Get a list of devices from ConnectionHandler
+     * Builds list for view with available devices
+     */
+
     public void onClickGetDevices(View view) {
         ch=new ConnectionHandler();
         for(DeviceModel dm: ch.getDevices()){
@@ -59,10 +72,13 @@ public class DeviceActivity extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
         view.startAnimation(buttonClick);
-
     }
 
-    /** Called when the user clicks Control Device */
+    /**
+     *  Called when the user clicks Control Device
+     *  Opens view to control the selected device
+     */
+
     public void onClickControlDevice(View view) {
         view.startAnimation(buttonClick);
         if(selected instanceof SensorModel) {
@@ -77,13 +93,12 @@ public class DeviceActivity extends AppCompatActivity {
 
     }
 
-    /* when list is pushed*/
+    /*
+     * When a device is selected in the list
+     * Selected device is returned from the view
+     */
     public void onSelected(ListView l, View v, int position, long id){
         DeviceModel selectedValue = adapter.getItem(position);
         System.out.println(selectedValue);
-    }
-
-    public void onBackPressed(){
-
     }
 }

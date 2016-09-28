@@ -29,9 +29,7 @@ import Model.SensorModel;
 public class ConnectionHandler {
 
 
-    /**
-     * 
-     */
+
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
         private String type;
         private String command;
@@ -152,6 +150,13 @@ public class ConnectionHandler {
 
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before firt call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with curren temperature from sensor.
+     *
+     */
     public void updateTemp(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "temperature", "");
@@ -170,6 +175,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with current pressure from sensor.
+     *
+     */
     public void updatePressure(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "pressure", "");
@@ -188,6 +200,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with current humidity from sensor.
+     *
+     */
     public void updateHumidity(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "humidity", "");
@@ -206,6 +225,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with current value of the magentic values from sensor.
+     *
+     */
     public void updateMagnometer(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "magnometer", "");
@@ -224,6 +250,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with current accelerometer from sensor.
+     *
+     */
     public void updateAccelerometer(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "accelerometer", "");
@@ -242,6 +275,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m SensorModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with current gyroscopical values from sensor.
+     *
+     */
     public void updateGyroscope(SensorModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "gyroscope", "");
@@ -260,6 +300,13 @@ public class ConnectionHandler {
         }
     }
 
+    /**
+     *
+     * @param m LightbulbModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method updates the model with the current color values from the lightbulb.
+     *
+     */
     public void updateColor(LightbulbModel m) {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "color", "");
@@ -278,13 +325,28 @@ public class ConnectionHandler {
             e.printStackTrace();
         }
     }
-    public void setColor(LightbulbModel lightBulb) {
-            IOConnection c = new IOConnection("PUT", "device/value", lightBulb.deviceAdress, "", lightBulb.color);
+
+    /**
+     *
+     * @param m LightbulbModel only contains id, before first call of respective methods in
+     *          connectionhandler.
+     *          Method sends the chosen color values from model to backend in order
+     *          to update the color of the lamp.
+     *
+     */
+    public void setColor(LightbulbModel m) {
+            IOConnection c = new IOConnection("PUT", "device/value", m.deviceAdress, "", m.color);
             c.execute();
 
     }
 
 
+    /**
+     * This method queries the server and retrieves all active devices from backend.
+     *
+     *
+     * @return List of devicemodels with the correct values set from backend.
+     */
     public List<DeviceModel> getDevices() {
         ArrayList<DeviceModel> l = new ArrayList<DeviceModel>();
         try {
@@ -311,6 +373,11 @@ public class ConnectionHandler {
         return l;
     }
 
+    /**
+     *
+     * @param model DeviceModel superClass to all other models.
+     * @param power Value of zero or one that is sent to the backend to represent status of device.
+     */
     public void updateStatus(DeviceModel model, String power) {
         new IOConnection("PUT","device/status",model.deviceAdress,"",power).execute();
     }

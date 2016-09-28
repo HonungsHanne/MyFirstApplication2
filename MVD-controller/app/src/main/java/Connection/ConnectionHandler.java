@@ -28,8 +28,6 @@ import Model.SensorModel;
  */
 public class ConnectionHandler {
 
-
-
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
         private String type;
         private String command;
@@ -53,8 +51,6 @@ public class ConnectionHandler {
             if(!sensorType.isEmpty()) {
                 url += "/" + sensorType;
             }
-
-            System.out.println(url);
         }
 
         //will run before doInBackground. Could be used to setup a thinking icon
@@ -64,17 +60,13 @@ public class ConnectionHandler {
 
         protected String getASCIIContentFromEntity(InputStream entity) throws IllegalStateException, IOException {
             InputStream in = entity;
-
             StringBuffer out = new StringBuffer();
             int n = 1;
             while (n > 0) {
                 byte[] b = new byte[4096];
                 n = in.read(b);
-
-
                 if (n > 0) out.append(new String(b, 0, n));
             }
-            System.out.println(out);
             return out.toString();
         }
 
@@ -82,7 +74,7 @@ public class ConnectionHandler {
         protected ArrayList<JSONObject> doInBackground(Void... params) {
             HttpURLConnection conn = null;
             JSONObject rootObject = null;
-            String strJSON;
+            String strJSON="";
             String text = "";
             String text2 = "";
             String json = "{";
@@ -95,12 +87,12 @@ public class ConnectionHandler {
                 conn.setRequestProperty("Accept", "application/json");
                 switch (type){
                     case "GET":
-
+                        conn.setRequestProperty("User-Agent","Chrome");
                         InputStream is = new BufferedInputStream(conn.getInputStream());
                         //test
                         text = getASCIIContentFromEntity(is);
                         // Removes all brackets and curlybrackets from start and end of string.
-                        strJSON = text.substring(2, text.length() - 2);
+                        if(text.length()>3){ strJSON = text.substring(2, text.length() - 2);}
                         // Split string into seperate JSON objects
                         String[] jsonFileArray = strJSON.split(Pattern.quote("},{"));
                         for (String s : jsonFileArray) {
@@ -133,7 +125,6 @@ public class ConnectionHandler {
             } catch (IOException p) {
                 p.printStackTrace();
             }
-            //  System.out.println(text2);
             return jsonArray;
         }
 

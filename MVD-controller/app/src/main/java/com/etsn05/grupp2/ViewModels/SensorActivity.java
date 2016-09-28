@@ -76,7 +76,7 @@ public class SensorActivity extends AppCompatActivity {
      */
 
     /**
-     * All gett buttons below are implemented
+     * All get buttons below are implemented
      * for requirement 6.2.4
      */
     public void onClickGetTemperature(View view) {
@@ -160,7 +160,7 @@ public class SensorActivity extends AppCompatActivity {
         textAccelerometer.setText(sensor.accelorometer);
 
     }
-    
+
     /**The View that calls on the method.
      *
      * @param view

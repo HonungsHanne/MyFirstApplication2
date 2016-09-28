@@ -23,7 +23,9 @@ public class LightBulbActivity extends AppCompatActivity {
 
 
     }
-
+    /**
+     * Created by Hanne on 2016-09-27.
+     */
     public void onClickGet(View view) {
         ch.updateColor(lightBulb);
         String color = lightBulb.color;

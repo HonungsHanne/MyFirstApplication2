@@ -16,8 +16,25 @@ public class TestLightBulbActivity {
 
     @Test
     public void testOnClickGetButton(View view) {
-        ch.updateColor(model);
+        LightbulbModel model = new LightbulbModel("70", "Lampa1", "00:10:18:01:92:20", "1");
+        model.blue = "00";
+        model.green = "01";
+        model.red = "01";
+        model.white = "00";
         String [] Test = new String[3];
+        Test[0]= model.red;
+        Test[1] = model.green;
+        Test[2] = model.blue;
+        Test[3] = model.white;
+
+        ch.updateColor(model); //Uppdaterar modellen med nya färger
+
+        assertArrayEquals();
+
+
+
+
+
 
 
 

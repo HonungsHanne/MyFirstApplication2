@@ -10,6 +10,9 @@ import android.widget.TextView;
 import Connection.ConnectionHandler;
 import Model.SensorModel;
 
+/**
+ * Requirement 6.2.7 is implemented by default.
+ */
 
 public class SensorActivity extends AppCompatActivity {
     TextView StatusField;
@@ -28,10 +31,18 @@ public class SensorActivity extends AppCompatActivity {
         this.StatusField = (TextView) findViewById(R.id.textID);
         sensor = (SensorModel) getIntent().getSerializableExtra("DeviceModel");
         Switch sw = ((Switch)findViewById(R.id.switch1));
+        /**
+         * Sensor is set on/off depending on current status
+         * requirement 6.2.2
+         */
         if(sensor.status.equals("1")){
             sw.setChecked(true);
         }
-
+        /**
+         * When the on/off switch is klicked,
+         * the server is updated accordingly
+         * requirement 6.2.3
+         */
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
@@ -41,6 +52,10 @@ public class SensorActivity extends AppCompatActivity {
                 }
             }
         });
+        /**
+         * Chosen device is displayed on this format
+         * according to requirement 6.2.1
+         */
         StatusField.setText(sensor.id + ", " + sensor.name + ", " + sensor.deviceAdress);
 
 
@@ -50,6 +65,10 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * All gett buttons below are implemented
+     * for requirement 6.2.4
+     */
     public void onClickGetTemperature(View view) {
         TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
         ch.updateTemp(sensor);
@@ -93,6 +112,9 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Implemented for requirement 6.2.6
+     */
     public void onClickClearAll(View view) {
 
         TextView text = (TextView) findViewById(R.id.textTemperature);
@@ -111,7 +133,9 @@ public class SensorActivity extends AppCompatActivity {
         text.setText("N/A");
     }
 
-
+    /**
+     * Implemented for requirement 6.2.5
+     */
     public void onClickGetAll(View view) {
         StatusField.setText("ITS WORKING -- anikin always");
     }

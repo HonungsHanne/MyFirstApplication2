@@ -10,6 +10,9 @@ import android.widget.TextView;
 import Connection.ConnectionHandler;
 import Model.LightbulbModel;
 
+/**
+ * requirement 6.3.6 is implemented by default.
+ */
 public class LightBulbActivity extends AppCompatActivity {
     private LightbulbModel lightBulb;
     private ConnectionHandler ch;
@@ -22,11 +25,24 @@ public class LightBulbActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_bulb);
         lightBulb = (LightbulbModel) getIntent().getSerializableExtra("DeviceModel");
         TextView title = (TextView) findViewById(R.id.titleLightBulb);
+
+        /**
+         * Device info is printed according to requirement 6.3.1
+         */
         title.setText(lightBulb.id + ", " + lightBulb.name + ", " + lightBulb.deviceAdress);
         Switch sw = ((Switch)findViewById(R.id.switch1));
+        /**
+         * On/off switch is set to current status
+         * of the device in the server. Requirement 6.3.2
+         */
         if(lightBulb.status.equals("1")){
             sw.setChecked(true);
         }
+
+        /**
+         * On/off switch changes the status on the server
+         * requirement 6.3.3
+         */
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
@@ -44,7 +60,10 @@ public class LightBulbActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * fetches current color values of the device on the server
+     * requirement 6.3.4
+     */
     public void onClickGet(View view) {
         if(lightBulb != null) {
             ch.updateColor(lightBulb);
@@ -73,6 +92,11 @@ public class LightBulbActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Sets the color values on the servers
+     * based on the current values on the view
+     * requirement 6.3.5
+     */
     public void onClickSet(View view) {
         TextView textRed = (TextView) findViewById(R.id.textRed);
         TextView textGreen = (TextView) findViewById(R.id.textGreen);

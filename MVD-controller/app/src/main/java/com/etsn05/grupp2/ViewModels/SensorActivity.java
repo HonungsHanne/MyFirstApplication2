@@ -14,15 +14,21 @@ import Model.SensorModel;
  * Requirement 6.2.7 is implemented by default.
  */
 
-public class SensorActivity extends AppCompatActivity {
-    TextView StatusField;
-    SensorModel sensor;
-    ConnectionHandler ch;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+/**
+ * Activity that describes the functionality of the Sensor view.
+ */
 
+public class SensorActivity extends AppCompatActivity {
+    private TextView StatusField;
+    private SensorModel sensor;
+    private ConnectionHandler ch;
+
+    /**
+     *
+     * @param savedInstanceState - previous saved instance of the view, Is null if no previous view is saved.
+     *
+     * This method is called upon when the activity is started.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +67,13 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
-    public void onClickGetStatus(View view){
-
-    }
+    /**
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This method uses calls updateTemperature from ConnectionHandler to update the Temperature value in the SensorModel.
+     */
 
     /**
      * All gett buttons below are implemented
@@ -76,20 +86,42 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This method uses calls updatePressure from ConnectionHandler to update the Pressure value in the SensorModel.
+     */
     public void onClickGetPressure(View view) {
         TextView textPressure = (TextView) findViewById(R.id.textPressure);
-        //textPressure.setText(ch.doInBackground("PRESSURE"));
         ch.updatePressure(sensor);
         textPressure.setText(sensor.pressure);
 
     }
 
+    /**
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This method uses calls updateHumidity from ConnectionHandler to update the Humidity value in the SensorModel.
+     */
     public void onClickGetHumidity(View view) {
         TextView textHumidity = (TextView) findViewById(R.id.textHumidity);
         ch.updateHumidity(sensor);
         textHumidity.setText(sensor.humidity);
 
     }
+
+    /**
+     *
+     * @param view
+     *
+     * The View that calls on the method.
+     *
+     * This method uses calls updateMagnometer from ConnectionHandler to update the Magnometer value in the SensorModel.
+     */
 
     public void onClickGetMagnetometer(View view) {
         TextView textMagnet = (TextView) findViewById(R.id.textMagnet);
@@ -98,6 +130,15 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view
+     *
+     * The View that calls on the method.
+     *
+     * This method uses calls updateAccelerometer from ConnectionHandler to update the Accelerometer value in the SensorModel.
+     */
+
     public void onClickGetGyroscope(View view) {
         TextView textGyrocope = (TextView) findViewById(R.id.textGyroscope);
         ch.updateGyroscope(sensor);
@@ -105,15 +146,27 @@ public class SensorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This method uses calls updateAccelerometer from ConnectionHandler to update the Accelerometer value in the SensorModel.
+     */
+
     public void onClickGetAccelerometer(View view) {
         TextView textAccelerometer = (TextView) findViewById(R.id.textAccelerometer);
         ch.updateAccelerometer(sensor);
         textAccelerometer.setText(sensor.accelorometer);
 
     }
-
-    /**
-     * Implemented for requirement 6.2.6
+    
+    /**The View that calls on the method.
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This Method clears all the fields that show sensor data.
      */
     public void onClickClearAll(View view) {
 
@@ -134,10 +187,39 @@ public class SensorActivity extends AppCompatActivity {
     }
 
     /**
-     * Implemented for requirement 6.2.5
+     *
+     * @param view
+     * The View that calls on the method.
+     *
+     * This method updates all of the fields in sensor device view.
      */
     public void onClickGetAll(View view) {
-        StatusField.setText("ITS WORKING -- anikin always");
+        TextView textTemperature = (TextView) findViewById(R.id.textTemperature);
+        ch.updateTemp(sensor);
+        textTemperature.setText(sensor.temperature);
+
+        TextView textPressure = (TextView) findViewById(R.id.textPressure);
+        ch.updatePressure(sensor);
+        textPressure.setText(sensor.pressure);
+
+        TextView textHumidity = (TextView) findViewById(R.id.textHumidity);
+        ch.updateHumidity(sensor);
+        textHumidity.setText(sensor.humidity);
+
+        TextView textMagnet = (TextView) findViewById(R.id.textMagnet);
+        ch.updateMagnometer(sensor);
+        textMagnet.setText(sensor.magnometer);
+
+
+        TextView textGyrocope = (TextView) findViewById(R.id.textGyroscope);
+        ch.updateGyroscope(sensor);
+        textGyrocope.setText(sensor.gyroscope);
+
+        TextView textAccelerometer = (TextView) findViewById(R.id.textAccelerometer);
+        ch.updateAccelerometer(sensor);
+        textAccelerometer.setText(sensor.accelorometer);
+
+
     }
 
 

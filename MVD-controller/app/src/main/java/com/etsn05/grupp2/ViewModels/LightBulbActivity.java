@@ -22,12 +22,7 @@ public class LightBulbActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_bulb);
 
 
-
-
-
     }
-
-
 
     public void onClickGet(View view) {
         ch.updateColor(lightBulb);

@@ -24,12 +24,14 @@ import Model.SensorModel;
 
 
 /**
- * Created by dee on 2016-09-26.
+ * Class that facilitates the communication between the backend and the deviceModels.
  */
-
 public class ConnectionHandler {
-    public static final String USER_AGENT = "Chrome";
 
+
+    /**
+     * 
+     */
     private class IOConnection extends AsyncTask<Void, Void, ArrayList> {
         private String type;
         private String command;

@@ -23,6 +23,7 @@ public class TestDeviceActivity {
     @Before
     public void set_up() {
         da = new DeviceActivity();
+        da.onCreate(null);
         view = new View(null);
     }
 
@@ -35,6 +36,5 @@ public class TestDeviceActivity {
     @Test
     public void testOnClickGetDevices() {
         da.onClickGetDevices(view);
-
     }
 }

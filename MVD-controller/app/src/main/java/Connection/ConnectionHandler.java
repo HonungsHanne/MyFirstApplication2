@@ -1,8 +1,9 @@
 package Connection;
 
-import android.bluetooth.BluetoothClass;
 import android.os.AsyncTask;
-import android.widget.Switch;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -11,16 +12,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.IllegalFormatException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import Model.*;
+import Model.DeviceModel;
+import Model.LightbulbModel;
+import Model.SensorModel;
 
 
 /**
@@ -47,14 +47,14 @@ public class ConnectionHandler {
             url += command;
             this.value = value;
             ret = null;
-            if(!id.isEmpty() && type.equals("PUT")){
+            if(!id.isEmpty() && !type.equals("PUT")){
                 url += "/" + id;
             }
             if(!sensorType.isEmpty()) {
                 url += "/" + sensorType;
             }
 
-
+            System.out.println(url);
         }
 
         //will run before doInBackground. Could be used to setup a thinking icon
@@ -74,6 +74,7 @@ public class ConnectionHandler {
 
                 if (n > 0) out.append(new String(b, 0, n));
             }
+            System.out.println(out);
             return out.toString();
         }
 
@@ -88,10 +89,10 @@ public class ConnectionHandler {
             String jsonEnd = "}";
             ArrayList<JSONObject> jsonArray = new ArrayList<JSONObject>();
             try {
-
                 conn = (HttpURLConnection) (new URL(url).openConnection());
                 conn.setRequestMethod(type);
-                conn.setRequestProperty("User-Agent", USER_AGENT);
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestProperty("Accept", "application/json");
                 switch (type){
                     case "GET":
 
@@ -110,12 +111,17 @@ public class ConnectionHandler {
                         }
                         break;
                     case "PUT":
+                        conn.setRequestProperty("Content-Type","application/json");
+                        rootObject = new JSONObject();
                         rootObject.put("deviceAddress", id);
-                        rootObject.put("value",value);
+                        rootObject.put("value", value);
                         conn.setDoOutput(true);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
+                        out.flush();
                         out.close();
+
+                        System.out.println(conn.getResponseCode());
                         break;
                     default:
                         throw new IllegalArgumentException("Wrong HTTP method TYPE");
@@ -141,101 +147,148 @@ public class ConnectionHandler {
             ret = jsonArray;
         }
 
-        public ArrayList<JSONObject> getReturn() {
-            return ret;
-        }
+
     }
 
     public void updateTemp(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "temperature", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "temperature", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.temperature = (String) json.get("value");
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updatePressure(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "pressure", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "pressure", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.pressure = (String) json.get("value");
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updateHumidity(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "humidity", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "humidity", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.humidity = (String) json.get("value");
         } catch(JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updateMagnometer(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "magnometer", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "magnometer", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
-            m.magnetmoeter = (String) json.get("value");
+            m.magnometer = (String) json.get("value");
         } catch(JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updateAccelerometer(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "accelerometer", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "accelerometer", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.accelorometer = (String) json.get("value");
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updateGyroscope(SensorModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "gyroscope", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "gyroscope", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.gyroscope = (String) json.get("value");
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
     }
 
     public void updateColor(LightbulbModel m) {
         try {
-            IOConnection c = new IOConnection("GET", "data/device", m.id(), "color", "");
+            IOConnection c = new IOConnection("GET", "data/device", m.id, "color", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
-            JSONObject json = list.get(0);
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            //fick denna i mergen, denna borde va den som stämmer
+            JSONObject json = list.get(list.size()-1);
             m.color = (String) json.get("value");
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
     }
+    public void setColor(LightbulbModel lightBulb) {
+            IOConnection c = new IOConnection("PUT", "device/value", lightBulb.deviceAdress, "", lightBulb.color);
+            c.execute();
+
+    }
+
 
     public List<DeviceModel> getDevices() {
         ArrayList<DeviceModel> l = new ArrayList<DeviceModel>();
         try {
-            IOConnection c = new IOConnection("GET", "/device", "", "", "");
+            IOConnection c = new IOConnection("GET", "device", "", "", "");
             c.execute();
-            ArrayList<JSONObject> list = c.getReturn();
+            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
             for (JSONObject json : list) {
                 if(json.get("name").equals("Nexturn")) {
                     l.add((DeviceModel) new LightbulbModel(json.getString("id"), json.getString("name"), json.getString("deviceAddress"), json.getString("status")));
@@ -245,8 +298,18 @@ public class ConnectionHandler {
             }
         } catch(JSONException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
 
         return l;
+    }
+
+    public void updateStatus(DeviceModel model, String power) {
+        new IOConnection("PUT","device/status",model.deviceAdress,"",power).execute();
     }
 }

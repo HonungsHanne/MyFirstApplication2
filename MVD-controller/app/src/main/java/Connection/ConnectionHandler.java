@@ -263,7 +263,8 @@ public class ConnectionHandler {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "color", "");
             c.execute();
             ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
-            JSONObject json = list.get(0);
+            //fick denna i mergen, denna borde va den som stämmer
+            JSONObject json = list.get(list.size()-1);
             m.color = (String) json.get("value");
         } catch (JSONException e) {
             e.printStackTrace();

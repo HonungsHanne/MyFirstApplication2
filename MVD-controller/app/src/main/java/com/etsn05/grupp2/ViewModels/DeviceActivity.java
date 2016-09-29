@@ -70,8 +70,9 @@ public class DeviceActivity extends AppCompatActivity {
      * Implemented according to requirement 6.1.2
      */
 
-    public void onClickGetDevices(View view) {
+    public void onClickGetDevices(View view) {http://www.dintaifung.com.my/
         ch=new ConnectionHandler();
+        devices.clear();
         for(DeviceModel dm: ch.getDevices()){
             devices.add(dm);
         }

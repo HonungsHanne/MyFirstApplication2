@@ -58,17 +58,12 @@ public class LightBulbActivity extends AppCompatActivity {
             }
         });
         ch = new ConnectionHandler();
-
-    /**
-     * Created by Hanne on 2016-09-27.
-
     }
 
 
     /**
      * fetches current color values of the device on the server
      * requirement 6.3.4
->>>>>>> 60637fa3ef2625d969ce1641a422f0f3f907aeab
      */
     public void onClickGet(View view) {
         if(lightBulb != null) {

@@ -112,8 +112,6 @@ public class ConnectionHandler {
                         out.write(rootObject.toString());
                         out.flush();
                         out.close();
-
-                        System.out.println(conn.getResponseCode());
                         break;
                     default:
                         throw new IllegalArgumentException("Wrong HTTP method TYPE");
@@ -177,7 +175,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "pressure", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.pressure = (String) json.get("value");
         } catch (JSONException e) {
@@ -202,7 +200,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "humidity", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.humidity = (String) json.get("value");
         } catch(JSONException e) {
@@ -227,7 +225,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "magnometer", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.magnometer = (String) json.get("value");
         } catch(JSONException e) {
@@ -252,7 +250,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "accelerometer", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.accelorometer = (String) json.get("value");
         } catch (JSONException e) {
@@ -277,7 +275,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "gyroscope", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             JSONObject json = list.get(0);
             m.gyroscope = (String) json.get("value");
         } catch (JSONException e) {
@@ -302,7 +300,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "data/device", m.id, "color", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             //fick denna i mergen, denna borde va den som stämmer
             JSONObject json = list.get(list.size()-1);
             m.color = (String) json.get("value");
@@ -343,7 +341,7 @@ public class ConnectionHandler {
         try {
             IOConnection c = new IOConnection("GET", "device", "", "", "");
             c.execute();
-            ArrayList<JSONObject> list = c.get(5000, TimeUnit.MILLISECONDS);
+            ArrayList<JSONObject> list = c.get(10000, TimeUnit.MILLISECONDS);
             for (JSONObject json : list) {
                 if(json.get("name").equals("Nexturn")) {
                     l.add((DeviceModel) new LightbulbModel(json.getString("id"), json.getString("name"), json.getString("deviceAddress"), json.getString("status")));

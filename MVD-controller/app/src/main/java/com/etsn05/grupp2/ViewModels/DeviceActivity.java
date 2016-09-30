@@ -44,6 +44,7 @@ public class DeviceActivity extends AppCompatActivity {
          *this until a list item is clicked. Requirement 6.1.5
          */
         b.setClickable(false);
+        b.setText("");
 
 
         devices=new ArrayList<DeviceModel>();
@@ -58,6 +59,7 @@ public class DeviceActivity extends AppCompatActivity {
                 selected=adapter.getItem(position);
                 Button b=(Button) findViewById(R.id.ButtonControlDevice);
                 b.setClickable(true);
+                b.setText("Control Device");
             }
         });
     }

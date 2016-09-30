@@ -103,14 +103,25 @@ public class LightBulbActivity extends AppCompatActivity {
         TextView textGreen = (TextView) findViewById(R.id.textGreen);
         TextView textBlue = (TextView) findViewById(R.id.textBlue);
         TextView textWhite = (TextView) findViewById(R.id.textWhite);
-        lightBulb.red = textRed.getText().toString();
-        lightBulb.green = textGreen.getText().toString();
-        lightBulb.blue = textBlue.getText().toString();
-        lightBulb.white = textWhite.getText().toString();
+        lightBulb.red = checkInput(textRed.getText().toString());
+        lightBulb.green = checkInput(textGreen.getText().toString());
+        lightBulb.blue = checkInput(textBlue.getText().toString());
+        lightBulb.white = checkInput(textWhite.getText().toString());
         lightBulb.color =lightBulb.red+lightBulb.green+lightBulb.blue+lightBulb.white;
         ch.setColor(lightBulb);
+        textRed.setText( lightBulb.red);
+        textGreen.setText( lightBulb.green);
+        textBlue.setText(  lightBulb.blue);
+        textWhite.setText( lightBulb.white);
 
         // SEND COLORS
 
+    }
+
+    private String checkInput(String input){
+        if( !(input.matches("-?[0-9a-fA-F]+")) || (input.length()>2) ) {
+            return "00";
+        }
+        return input;
     }
 }

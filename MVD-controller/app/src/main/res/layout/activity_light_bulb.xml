@@ -37,7 +37,7 @@
         android:id="@+id/linearLayout">
         <TextView
             android:layout_marginLeft="10dp"
-            android:text="R"
+            android:text="R:"
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -69,7 +69,7 @@
         android:id="@+id/linearLayout1">
         <TextView
             android:layout_marginLeft="10dp"
-            android:text="G"
+            android:text="G:"
             android:textSize="30sp"
 
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
 
         <TextView
             android:layout_marginLeft="10dp"
-            android:text="B"
+            android:text="B:"
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -127,7 +127,7 @@
 
         <TextView
             android:layout_marginLeft="10dp"
-            android:text="W"
+            android:text="W:"
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"

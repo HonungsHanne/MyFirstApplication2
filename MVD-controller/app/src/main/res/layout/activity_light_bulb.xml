@@ -41,7 +41,7 @@
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-
+            android:id="@+id/labelRed"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -51,7 +51,7 @@
             android:inputType="text"
             android:text="N/A"
             android:ems="10"
-            android:layout_below="@+id/Pressure"
+            android:layout_below="@+id/labelRed"
             android:id="@+id/textRed"
             />
     </LinearLayout>
@@ -71,7 +71,7 @@
             android:layout_marginLeft="10dp"
             android:text="G:"
             android:textSize="30sp"
-
+            android:id="@+id/labelGreen"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_below="@+id/switch1"
@@ -83,9 +83,9 @@
             android:inputType="text"
             android:text="N/A"
             android:ems="10"
-            android:layout_below="@+id/Pressure"
+            android:layout_below="@+id/labelGreen"
             android:layout_weight="0.5"
-        android:id="@+id/textBlue" />
+            android:id="@+id/textGreen" />
     </LinearLayout>
 
     <LinearLayout
@@ -102,7 +102,7 @@
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-
+            android:id="@+id/labelBlue"
             android:layout_below="@+id/switch1"
             android:layout_weight="0.5" />
         <EditText
@@ -111,9 +111,9 @@
             android:inputType="text"
             android:text="N/A"
             android:ems="10"
-            android:layout_below="@+id/Pressure"
+            android:layout_below="@+id/labelBlue"
             android:layout_weight="0.5"
-        android:id="@+id/textGreen" />
+            android:id="@+id/textBlue" />
     </LinearLayout>
 
     <LinearLayout

@@ -103,15 +103,17 @@ public class ConnectionHandler {
                         }
                         break;
                     case "PUT":
-                        conn.setRequestProperty("Content-Type","application/json");
                         rootObject = new JSONObject();
                         rootObject.put("deviceAddress", id);
                         rootObject.put("value", value);
                         conn.setDoOutput(true);
+                        System.out.println(url);
+                        System.out.println(rootObject);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
                         out.flush();
                         out.close();
+                        conn.getResponseCode();
                         break;
                     default:
                         throw new IllegalArgumentException("Wrong HTTP method TYPE");

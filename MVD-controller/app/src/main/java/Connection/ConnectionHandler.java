@@ -107,8 +107,6 @@ public class ConnectionHandler {
                         rootObject.put("deviceAddress", id);
                         rootObject.put("value", value);
                         conn.setDoOutput(true);
-                        System.out.println(url);
-                        System.out.println(rootObject);
                         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
                         out.write(rootObject.toString());
                         out.flush();

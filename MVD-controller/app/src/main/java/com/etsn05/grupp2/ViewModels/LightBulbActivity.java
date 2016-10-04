@@ -85,10 +85,10 @@ public class LightBulbActivity extends AppCompatActivity {
         TextView textGreen = (TextView) findViewById(R.id.textGreen);
         TextView textBlue = (TextView) findViewById(R.id.textBlue);
         TextView textWhite = (TextView) findViewById(R.id.textWhite);
-        textRed.setText(lightBulb.red);
-        textGreen.setText(lightBulb.green);
-        textBlue.setText(lightBulb.blue);
-        textWhite.setText(lightBulb.white);
+        textRed.setText("0x"+lightBulb.red);
+        textGreen.setText("0x"+lightBulb.green);
+        textBlue.setText("0x"+lightBulb.blue);
+        textWhite.setText("0x"+lightBulb.white);
 
 
     }
@@ -109,10 +109,10 @@ public class LightBulbActivity extends AppCompatActivity {
         lightBulb.white = checkInput(textWhite.getText().toString());
         lightBulb.color =lightBulb.red+lightBulb.green+lightBulb.blue+lightBulb.white;
         ch.setColor(lightBulb);
-        textRed.setText( lightBulb.red);
-        textGreen.setText( lightBulb.green);
-        textBlue.setText(  lightBulb.blue);
-        textWhite.setText( lightBulb.white);
+        textRed.setText( "0x"+lightBulb.red);
+        textGreen.setText( "0x"+lightBulb.green);
+        textBlue.setText(  "0x"+lightBulb.blue);
+        textWhite.setText( "0x"+lightBulb.white);
 
         // SEND COLORS
 

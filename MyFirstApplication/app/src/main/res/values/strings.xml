@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="button_1">Accelerometer</string>
+    <string name="button_2">Kompass</string>
+</resources>

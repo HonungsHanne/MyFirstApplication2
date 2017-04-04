@@ -12,15 +12,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void buttonOne(View view){
+
+    public void buttonOne(View view) {
         Intent intent = new Intent(this, AccelerometerActivity.class);
         startActivity(intent);
 
     }
-    public void buttonTwo(View view){
-       Intent intent = new Intent(MainActivity.this, CompassActivity.class);
+
+    public void buttonTwo(View view) {
+        Intent intent = new Intent(MainActivity.this, CompassActivity.class);
         startActivity(intent);
 
     }
 }
- 
